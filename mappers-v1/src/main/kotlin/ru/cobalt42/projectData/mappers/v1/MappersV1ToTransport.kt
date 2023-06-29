@@ -18,7 +18,7 @@ fun ProjectContext.toTransportProjectGet() = ProjectPaginatedResponse(
             building = projectResponse.building,
             postCode = projectResponse.postCode,
             objectStatus = ObjectStatus(
-                changeDate = projectResponse.objectStatus.changeDate,
+                changeDate = projectResponse.objectStatus.changeDate.asString(),
                 statusId = projectResponse.objectStatus.statusId
             )
         )
@@ -39,7 +39,7 @@ fun ProjectContext.toTransportProjectCreateUpdateResponse() = ProjectResponse(
             building = projectResponse.building,
             postCode = projectResponse.postCode,
             objectStatus = ObjectStatus(
-                changeDate = projectResponse.objectStatus.changeDate,
+                changeDate = projectResponse.objectStatus.changeDate.asString(),
                 statusId = projectResponse.objectStatus.statusId
             )
         )

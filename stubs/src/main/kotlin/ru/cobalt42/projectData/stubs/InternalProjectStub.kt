@@ -1,5 +1,6 @@
 package ru.cobalt42.projectData.stubs
 
+import ru.cobalt42.projectData.common.models.InternalChangeDate
 import ru.cobalt42.projectData.common.models.InternalObjectStatus
 import ru.cobalt42.projectData.common.models.InternalProject
 import ru.cobalt42.projectData.common.models.InternalUid
@@ -19,7 +20,7 @@ object InternalProjectStub {
         building = "stub building",
         postCode = "stub postCode",
         objectStatus = InternalObjectStatus(
-            changeDate = "2023-01-01",
+            changeDate = InternalChangeDate("2023-01-01"),
             statusId = 1
         )
     )

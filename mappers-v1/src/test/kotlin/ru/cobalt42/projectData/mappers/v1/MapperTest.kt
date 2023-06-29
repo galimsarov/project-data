@@ -3,6 +3,7 @@ package ru.cobalt42.projectData.mappers.v1
 import ru.cobalt42.api.v1.models.ObjectStatus
 import ru.cobalt42.api.v1.models.Project
 import ru.cobalt42.projectData.common.ProjectContext
+import ru.cobalt42.projectData.common.models.InternalChangeDate
 import ru.cobalt42.projectData.common.models.InternalObjectStatus
 import ru.cobalt42.projectData.common.models.InternalProject
 import ru.cobalt42.projectData.common.models.InternalUid
@@ -39,7 +40,7 @@ class MapperTest {
         assertEquals("projectHouse", context.projectRequest.house)
         assertEquals("projectBuilding", context.projectRequest.building)
         assertEquals("projectPostCode", context.projectRequest.postCode)
-        assertEquals("2023-01-01", context.projectRequest.objectStatus.changeDate)
+        assertEquals("2023-01-01", context.projectRequest.objectStatus.changeDate.asString())
         assertEquals(1, context.projectRequest.objectStatus.statusId)
     }
 
@@ -57,7 +58,7 @@ class MapperTest {
                 house = "projectHouse",
                 building = "projectBuilding",
                 postCode = "projectPostCode",
-                objectStatus = InternalObjectStatus(changeDate = "2023-01-01", statusId = 1)
+                objectStatus = InternalObjectStatus(changeDate = InternalChangeDate("2023-01-01"), statusId = 1)
             )
         )
 
@@ -91,7 +92,7 @@ class MapperTest {
                 house = "projectHouse",
                 building = "projectBuilding",
                 postCode = "projectPostCode",
-                objectStatus = InternalObjectStatus(changeDate = "2023-01-01", statusId = 1)
+                objectStatus = InternalObjectStatus(changeDate = InternalChangeDate("2023-01-01"), statusId = 1)
             )
         )
 

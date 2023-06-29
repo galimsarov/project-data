@@ -3,6 +3,7 @@ package ru.cobalt42.projectData.mappers.v1
 import ru.cobalt42.api.v1.models.ObjectStatus
 import ru.cobalt42.api.v1.models.Project
 import ru.cobalt42.projectData.common.ProjectContext
+import ru.cobalt42.projectData.common.models.InternalChangeDate
 import ru.cobalt42.projectData.common.models.InternalObjectStatus
 import ru.cobalt42.projectData.common.models.InternalUid
 
@@ -23,6 +24,10 @@ fun ProjectContext.fromTransport(project: Project) {
 fun String?.toInternalUid(): InternalUid = if (this == null) InternalUid.NONE else InternalUid(this)
 
 fun ObjectStatus?.toInternalObjectStatus() = InternalObjectStatus(
-    changeDate = this?.changeDate ?: "",
+    changeDate = toInternalChangeDate(),
     statusId = this?.statusId ?: 0
 )
+
+fun ObjectStatus?.toInternalChangeDate(): InternalChangeDate =
+    if (this == null) InternalChangeDate.NONE
+    else InternalChangeDate(changeDate ?: "")
