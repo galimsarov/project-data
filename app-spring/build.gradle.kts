@@ -13,17 +13,13 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin") // from models to json and Vice versa
     implementation("org.jetbrains.kotlin:kotlin-reflect") // for spring-boot app
     implementation("org.jetbrains.kotlin:kotlin-stdlib") // for spring-boot app
-
     // transport models
-    //implementation(project(":common"))
-
+    implementation(project(":common"))
     // v1 api
-    //implementation(project(":api-v1-jackson"))
-    //implementation(project(":mappers-v1"))
-
+    implementation(project(":api-v1-jackson"))
+    implementation(project(":mappers-v1"))
     // Stubs
-    //implementation(project(":stubs"))
-
+    implementation(project(":stubs"))
     // tests
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 

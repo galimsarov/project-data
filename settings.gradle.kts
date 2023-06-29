@@ -27,3 +27,4 @@ include("common")
 include("mappers-v1")
 
 include("app-spring")
+include("stubs")
