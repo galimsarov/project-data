@@ -16,7 +16,7 @@ object InternalProjectStub {
         region = "stub region",
         city = "stub city",
         street = "stub street",
-        house = "stub house",
+        house = "1",
         building = "stub building",
         postCode = "stub postCode",
         objectStatus = InternalObjectStatus(

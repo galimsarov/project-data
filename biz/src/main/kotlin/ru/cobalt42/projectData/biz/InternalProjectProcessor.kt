@@ -5,6 +5,7 @@ import com.crowdproj.kotlin.cor.handlers.worker
 import com.crowdproj.kotlin.cor.rootChain
 import ru.cobalt42.projectData.biz.groups.operation
 import ru.cobalt42.projectData.biz.validation.*
+import ru.cobalt42.projectData.biz.workers.initStatus
 import ru.cobalt42.projectData.common.ProjectContext
 import ru.cobalt42.projectData.common.models.InternalChangeDate
 import ru.cobalt42.projectData.common.models.InternalCommand
@@ -15,6 +16,8 @@ class InternalProjectProcessor {
 
     companion object {
         private val BusinessChain: ICorExec<ProjectContext> = rootChain<ProjectContext> {
+            initStatus("Инициализация статуса")
+
             operation("Создание проекта", InternalCommand.CREATE) {
                 validation {
                     worker("Копируем поля в commodityValidating") { projectValidating = projectRequest.copy() }

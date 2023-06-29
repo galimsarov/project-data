@@ -13,7 +13,7 @@ fun CorChainDsl<ProjectContext>.validateHouseHasContent(title: String) = worker 
     handle {
         fail(
             errorValidation(
-                field = "country",
+                field = "house",
                 violationCode = "noContent",
                 description = "field must contain letters"
             )
