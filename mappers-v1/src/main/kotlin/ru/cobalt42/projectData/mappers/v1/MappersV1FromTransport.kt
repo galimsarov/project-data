@@ -7,8 +7,8 @@ import ru.cobalt42.projectData.common.models.InternalChangeDate
 import ru.cobalt42.projectData.common.models.InternalObjectStatus
 import ru.cobalt42.projectData.common.models.InternalUid
 
-fun ProjectContext.fromTransport(project: Project) {
-    projectRequest.uid = project.uid.toInternalUid()
+fun ProjectContext.fromTransport(project: Project = Project(), uid: String = "") {
+    projectRequest.uid = toInternalUid(project, uid)
     projectRequest.name = project.name ?: ""
     projectRequest.code = project.code ?: ""
     projectRequest.country = project.country ?: ""
@@ -21,7 +21,11 @@ fun ProjectContext.fromTransport(project: Project) {
     projectRequest.objectStatus = project.objectStatus.toInternalObjectStatus()
 }
 
-fun String?.toInternalUid(): InternalUid = if (this == null) InternalUid.NONE else InternalUid(this)
+fun toInternalUid(project: Project?, uid: String) = when {
+    uid.isNotBlank() -> InternalUid(uid)
+    project == null -> InternalUid.NONE
+    else -> project.uid?.let { InternalUid(it) } ?: InternalUid.NONE
+}
 
 fun ObjectStatus?.toInternalObjectStatus() = InternalObjectStatus(
     changeDate = toInternalChangeDate(),

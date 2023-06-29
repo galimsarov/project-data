@@ -26,6 +26,7 @@ class ProjectController {
     @GetMapping("/{uid}")
     fun readProject(@PathVariable uid: String): ProjectPaginatedResponse {
         val context = ProjectContext()
+        context.fromTransport(uid = uid)
         context.projectResponse = InternalProjectStub.get()
         return context.toTransportProjectGet()
     }
@@ -33,7 +34,7 @@ class ProjectController {
     @PostMapping("/{uid}")
     fun updateProject(@PathVariable("uid") uid: String, @RequestBody project: Project): ProjectResponse {
         val context = ProjectContext()
-        context.fromTransport(project)
+        context.fromTransport(project, uid)
         context.projectResponse = InternalProjectStub.get()
         return context.toTransportProjectCreateUpdateResponse()
     }
