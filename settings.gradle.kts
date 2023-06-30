@@ -30,3 +30,5 @@ include("app-spring")
 include("stubs")
 
 include("biz")
+
+include("repo-tests")

@@ -12,4 +12,5 @@ data class InternalProject(
     var building: String = "",
     var postCode: String = "",
     var objectStatus: InternalObjectStatus = InternalObjectStatus(),
+    var lock: InternalLock = InternalLock.NONE,
 )
