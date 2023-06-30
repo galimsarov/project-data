@@ -8,7 +8,7 @@ import ru.cobalt42.projectData.common.helpers.fail
 
 fun CorChainDsl<ProjectContext>.validateUidNotEmpty(title: String) = worker {
     this.title = title
-    on { projectValidating.uid.toString().isEmpty() }
+    on { projectValidating.uid.asString().isBlank() }
     handle {
         fail(
             errorValidation(

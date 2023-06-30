@@ -3,9 +3,16 @@ package ru.cobalt42.projectData.biz
 import org.junit.Test
 import ru.cobalt42.projectData.common.models.InternalCommand
 
-class BizValidationCreateTest {
-    private val command = InternalCommand.CREATE
+class BizValidationUpdateTest {
+    private val command = InternalCommand.UPDATE
     private val processor by lazy { InternalProjectProcessor() }
+
+    // name
+    @Test
+    fun correctUid() = validationUidCorrect(command, processor)
+
+    @Test
+    fun emptyUid() = validationUidEmpty(command, processor)
 
     // name
     @Test
